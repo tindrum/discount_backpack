@@ -26,6 +26,7 @@ extension CGContext {
 class GraphView: UIView {
 
     // let CalcData: DiscountCalc = DiscountCalc.shared
+    let calcData:Calculator = Calculator()
     
     override func draw(_ rect: CGRect) {
         let context:CGContext = UIGraphicsGetCurrentContext()!

@@ -98,6 +98,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="editChanged:" destination="DBP-4v-PsV" eventType="editingDidEnd" id="rXf-bV-EgU"/>
+                                    <outlet property="delegate" destination="DBP-4v-PsV" id="0Pq-U8-4Qp"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="dollars off" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TJj-Z5-Ugo">
@@ -111,6 +112,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="editChanged:" destination="DBP-4v-PsV" eventType="editingDidEnd" id="A6D-pf-0FA"/>
+                                    <outlet property="delegate" destination="DBP-4v-PsV" id="8Fb-TC-50T"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="discount %" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="348-Rl-nXv">
@@ -124,6 +126,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="editChanged:" destination="DBP-4v-PsV" eventType="editingDidEnd" id="fZA-Oq-qPN"/>
+                                    <outlet property="delegate" destination="DBP-4v-PsV" id="Xlg-0V-GdE"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="other discount %" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="leN-7s-wjN">
@@ -137,6 +140,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="editChanged:" destination="DBP-4v-PsV" eventType="editingDidEnd" id="7nP-Bp-HGk"/>
+                                    <outlet property="delegate" destination="DBP-4v-PsV" id="duE-wH-d5i"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="tax %" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CsR-Yr-sth">
@@ -150,6 +154,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="editChanged:" destination="DBP-4v-PsV" eventType="editingDidEnd" id="WXJ-DN-s0h"/>
+                                    <outlet property="delegate" destination="DBP-4v-PsV" id="LYb-xv-INo"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price $" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxh-aI-f4Q">
@@ -183,6 +188,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="leN-7s-wjN" firstAttribute="leading" secondItem="WCz-S0-tKI" secondAttribute="trailing" constant="20" id="0z7-KT-HfA"/>
                             <constraint firstItem="leN-7s-wjN" firstAttribute="top" secondItem="348-Rl-nXv" secondAttribute="bottom" constant="18" id="3Qn-gP-iEW"/>
@@ -211,6 +217,9 @@
                             <constraint firstItem="CsR-Yr-sth" firstAttribute="leading" secondItem="XIK-EM-M4w" secondAttribute="trailing" constant="20" id="uux-1L-Fds"/>
                             <constraint firstItem="hbu-JS-Gnl" firstAttribute="top" secondItem="Xxh-aI-f4Q" secondAttribute="bottom" constant="18" id="wyT-GR-IPd"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="umD-oD-7Ot" appends="YES" id="aSj-CN-YPF"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Calculator" id="gzU-Ms-dYr"/>
                     <connections>
@@ -219,12 +228,17 @@
                         <outlet property="dollarsOff" destination="TJj-Z5-Ugo" id="CQ5-x9-xwE"/>
                         <outlet property="originalPrice" destination="t9K-fl-kRC" id="CgQ-Or-u0z"/>
                         <outlet property="otherDiscount" destination="leN-7s-wjN" id="nmi-aj-gSY"/>
-                        <outlet property="price" destination="qVs-OR-mLh" id="z2x-bj-hGT"/>
+                        <outlet property="price" destination="qVs-OR-mLh" id="rzI-pO-TcH"/>
                         <outlet property="tax" destination="CsR-Yr-sth" id="Vzl-lV-yAz"/>
                         <segue destination="3jG-kJ-1gI" kind="show" identifier="showResults" id="2MU-D7-H6T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Flr-2f-Wng" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="umD-oD-7Ot">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="DBP-4v-PsV" id="hrT-Mr-tYC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="112.8" y="87.706146926536732"/>
         </scene>

@@ -10,21 +10,51 @@ import UIKit
 
 class CalculatorViewController: UIViewController, UITextFieldDelegate {
     let calcData:Calculator = Calculator()
+    var currentTextField:UITextField?
     
     @IBAction func editChanged(_ sender: UITextField) {
-        switch sender {
-        case price:
-            calcData.price = Float(sender.text!)!
-        case dollarsOff:
-            calcData.dollarsOff = Float(sender.text!)!
-        case discount:
-            calcData.discount = Float(sender.text!)!
-        case otherDiscount:
-            calcData.otherDiscount = Float(sender.text!)!
-        case tax:
-            calcData.tax = Float(sender.text!)!
-        default:
-            print("what text field got clicked?")
+        currentTextField = sender
+        if Float(sender.text!) != nil {
+            switch sender {
+                case price:
+                    calcData.price = Float(sender.text!)!
+                case dollarsOff:
+                    calcData.dollarsOff = Float(sender.text!)!
+                case discount:
+                    calcData.discount = Float(sender.text!)!
+                case otherDiscount:
+                    calcData.otherDiscount = Float(sender.text!)!
+                case tax:
+                    calcData.tax = Float(sender.text!)!
+                default:
+                    print("what text field got clicked?")
+            }
+            originalPrice.text = String(calcData.price)
+            discountPrice.text = String(calcData.discountPrice)
+        }
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        if (currentTextField != nil) {
+            currentTextField?.resignFirstResponder()
+            print("resigning first responder")
+        }
+    }
+    
+    // UITextField Delegate from "Swift Programming: The Big Nerd Ranch Guide, 2nd Ed."
+    // by M. Mathias and J. Gallagher, page 84
+    //
+    // If there is already a decimal in the number,
+    // suppress the addition of another one.
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let existingTextHasDecimalSeparator = textField.text?.range(of: ".")
+        let replacementTextHasDecimalSeparator = string.range(of: ".")
+        
+        if existingTextHasDecimalSeparator != nil,
+            replacementTextHasDecimalSeparator != nil {
+            return false
+        } else {
+            return true
         }
     }
     

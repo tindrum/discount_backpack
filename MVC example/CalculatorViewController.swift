@@ -8,8 +8,35 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController {
-
+class CalculatorViewController: UIViewController, UITextFieldDelegate {
+    let calcData:Calculator = Calculator()
+    
+    @IBAction func editChanged(_ sender: UITextField) {
+        switch sender {
+        case price:
+            calcData.price = Float(sender.text!)!
+        case dollarsOff:
+            calcData.dollarsOff = Float(sender.text!)!
+        case discount:
+            calcData.discount = Float(sender.text!)!
+        case otherDiscount:
+            calcData.otherDiscount = Float(sender.text!)!
+        case tax:
+            calcData.tax = Float(sender.text!)!
+        default:
+            print("what text field got clicked?")
+        }
+    }
+    
+    @IBOutlet weak var price: UITextField!
+    @IBOutlet weak var dollarsOff: UITextField!
+    @IBOutlet weak var discount: UITextField!
+    @IBOutlet weak var otherDiscount: UITextField!
+    @IBOutlet weak var tax: UITextField!
+    
+    @IBOutlet weak var originalPrice: UILabel!
+    @IBOutlet weak var discountPrice: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +48,7 @@ class CalculatorViewController: UIViewController {
         // #selector() selects and executes that function
 
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -16,7 +16,39 @@ let currencySymbol = currentLocale.currencySymbol
 class CalculatorViewController: UIViewController, UITextFieldDelegate {
     let calcData:Calculator = Calculator()
     var currentTextField:UITextField?
+
+    @IBOutlet weak var price: UITextField!
+    @IBOutlet weak var dollarsOff: UITextField!
+    @IBOutlet weak var discount: UITextField!
+    @IBOutlet weak var otherDiscount: UITextField!
+    @IBOutlet weak var tax: UITextField!
     
+    @IBOutlet weak var originalPrice: UILabel!
+    @IBOutlet weak var discountPrice: UILabel!
+
+    @IBOutlet weak var imageView: UIImageView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Make Swipe Gestures
+        let swipeLeft:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        view.addGestureRecognizer(swipeLeft)
+        // handleSwipe is a function down below...
+        // #selector() selects and executes that function
+        
+        // initialize image view
+        imageView.image = UIImage(named: "backpack")
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
     
     @IBAction func editChanged(_ sender: UITextField) {
         if Float(sender.text!) != nil {
@@ -81,33 +113,6 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBOutlet weak var price: UITextField!
-    @IBOutlet weak var dollarsOff: UITextField!
-    @IBOutlet weak var discount: UITextField!
-    @IBOutlet weak var otherDiscount: UITextField!
-    @IBOutlet weak var tax: UITextField!
-    
-    @IBOutlet weak var originalPrice: UILabel!
-    @IBOutlet weak var discountPrice: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Make Swipe Gestures
-        let swipeLeft:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        view.addGestureRecognizer(swipeLeft)
-        // handleSwipe is a function down below...
-        // #selector() selects and executes that function
-
-        // Do any additional setup after loading the view.
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
  

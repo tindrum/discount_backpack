@@ -25,12 +25,16 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate {
                     calcData.price = Float(sender.text!)!
                 case dollarsOff:
                     calcData.dollarsOff = Float(sender.text!)!
-                case discount, otherDiscount, tax:
+                case discount:
                     calcData.discount = Float(sender.text!)! / 100.0
+                case otherDiscount:
+                    calcData.otherDiscount = Float(sender.text!)! / 100.0
+                case tax:
+                    calcData.tax = Float(sender.text!)! / 100.0
                 default:
                     print("what text field got clicked?")
             }
-            originalPrice.text = currencySymbol! + dollarFormatter.string(from: NSNumber(value:calcData.price))!
+            originalPrice.text = currencySymbol! + dollarFormatter.string(from: NSNumber(value:calcData.originalPrice))!
             discountPrice.text = currencySymbol! + dollarFormatter.string(from: NSNumber(value:calcData.discountPrice))!
         }
     }
@@ -136,6 +140,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate {
             if (text != "") {
                 return String(format: "%1.2f", Float(text!)!)
             } else {
+                // will crash on empty text field if no value given back
                 return "0.00"
             }
         } else {
@@ -145,7 +150,12 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate {
 
     func convertToPercent(_ text: String?) -> String {
         if (text != nil) {
-            return String(format: "%2.2f", Float(text!)!)
+            if (text != "") {
+                return String(format: "%2.2f", Float(text!)!)
+            } else {
+                // will crash on empty text field if no value given back
+                return "0.00"
+            }
         } else {
             return "00.00"
         }

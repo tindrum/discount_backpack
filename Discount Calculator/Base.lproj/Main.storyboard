@@ -29,7 +29,7 @@
         <!--Calculator-->
         <scene sceneID="EU5-qe-ZFb">
             <objects>
-                <viewController title="Calculator" id="DBP-4v-PsV" customClass="CalculatorViewController" customModule="MVC_example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Calculator" id="DBP-4v-PsV" customClass="CalculatorViewController" customModule="Discount_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Ae-pC-3zJ"/>
                         <viewControllerLayoutGuide type="bottom" id="KPA-wF-cyj"/>
@@ -271,12 +271,12 @@
         <!--Results-->
         <scene sceneID="W0W-vN-NCd">
             <objects>
-                <viewController title="Results" id="3jG-kJ-1gI" customClass="ResultsViewController" customModule="MVC_example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Results" id="3jG-kJ-1gI" customClass="ResultsViewController" customModule="Discount_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7xH-5b-gN7"/>
                         <viewControllerLayoutGuide type="bottom" id="tGA-5I-luY"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2fr-Gh-63r" customClass="GraphView" customModule="MVC_example" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="2fr-Gh-63r" customClass="GraphView" customModule="Discount_Calculator" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -6,14 +6,13 @@
 //  Copyright © 2017 Daniel Henderson. All rights reserved.
 //
 
-class Calculator {
-    // "The One Line Singleton" from
-    // https://krakendev.io/blog/the-right-way-to-write-a-singleton
-    // couldn't get his idea to work.
+final class Calculator {
     
-    
-    init() {} // This prevents others from using the
-                      // default '()' initializer for this class.
+    // Article about singleton. 
+    //http://stackoverflow.com/questions/39628277/singleton-with-swift-3-0
+    static let shared = Calculator()
+        
+   
     
     // Property Observers from "Swift Programming: The Big Nerd Ranch Guide, 2nd Ed."
     // by M. Mathias and J. Gallagher, page 196
@@ -83,5 +82,4 @@ class Calculator {
 //        print("New discount price: " + String(self.discountPrice))
     }
     
-    static let shared:Calculator = Calculator()
 }

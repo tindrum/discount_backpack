@@ -24,9 +24,8 @@ extension CGContext {
 }
 
 class GraphView: UIView {
+    let calcData:Calculator = Calculator.shared
 
-    // let CalcData: DiscountCalc = DiscountCalc.shared
-    let calcData:Calculator = Calculator()
     
     override func draw(_ rect: CGRect) {
         let context:CGContext = UIGraphicsGetCurrentContext()!
@@ -46,8 +45,8 @@ class GraphView: UIView {
         context.fill(CGRect(x:leftGuide, y:topGuide, width: screenWidth - 32.0, height: screenHeight - 96.0))
         
         // Draw Text
-        let myText = "Cyan Box"
-        let subText = "Baby blue..."
+        let myText = String(calcData.originalPrice)
+        let subText = String(calcData.discountPrice)
         
         // Text Attributes
         let textAttributes = [

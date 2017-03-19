@@ -9,6 +9,7 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
+    let calcData:Calculator = Calculator.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()

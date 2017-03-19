@@ -14,7 +14,7 @@ let currentLocale = Locale.current
 let currencySymbol = currentLocale.currencySymbol
 
 class CalculatorViewController: UIViewController, UITextFieldDelegate {
-    let calcData:Calculator = Calculator()
+    let calcData:Calculator = Calculator.shared
     var currentTextField:UITextField?
 
     @IBOutlet weak var price: UITextField!

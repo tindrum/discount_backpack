@@ -208,10 +208,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wti-oq-qXC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wti-oq-qXC">
                                 <rect key="frame" x="0.0" y="64" width="75" height="109"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="102" id="7gD-eS-Y5r"/>
+                                    <constraint firstAttribute="height" constant="109" id="7gD-eS-Y5r"/>
                                     <constraint firstAttribute="width" constant="75" id="BqN-TW-hZD"/>
                                 </constraints>
                             </imageView>

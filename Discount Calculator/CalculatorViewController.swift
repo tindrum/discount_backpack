@@ -133,7 +133,11 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate {
     // can't be searched for a place for the decimal point.
     func convertToMoney(_ text: String?) -> String {
         if (text != nil){
-            return String(format: "%1.2f", Float(text!)!)
+            if (text != "") {
+                return String(format: "%1.2f", Float(text!)!)
+            } else {
+                return "0.00"
+            }
         } else {
             return "0.00"
         }

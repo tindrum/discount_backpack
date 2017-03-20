@@ -72,7 +72,7 @@ class GraphView: UIView {
         
         let i = 2
         let subRectangleHeight:CGFloat = drawingHeight * CGFloat(calcData.percentSpent)
-        let subRectYPos:CGFloat = drawingHeight - ( drawingHeight * CGFloat(calcData.percentSaved))
+        let subRectYPos:CGFloat = topGuide + ( drawingHeight * CGFloat(calcData.percentSaved))
         
         context.setFillColor(colors[i])
         context.fill(CGRect(x:columnXPos[1], y:subRectYPos, width:columnWidth, height: subRectangleHeight))

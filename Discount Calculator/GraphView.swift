@@ -23,6 +23,7 @@ extension CGContext {
     }
 }
 
+
 class GraphView: UIView {
     let calcData:Calculator = Calculator.shared
     
@@ -49,10 +50,20 @@ class GraphView: UIView {
         // array of my favorite colors
         var colors: Array<Int> = [ 0xD528FF, 0xF7FF58, 0xCCBC0E ]
         
+//        originalPrice.text = currencySymbol! + dollarFormatter.string(from: NSNumber(value:calcData.originalPrice))!
+//        discountPrice.text = currencySymbol! + dollarFormatter.string(from: NSNumber(value:calcData.discountPrice))!
+
         // array of main text
         let headingText: Array<String> = ["Original Price", "You Saved", "You Pay"]
-        let moneyText: Array<String> = [ String(calcData.originalPrice), String(calcData.moneySaved), String(calcData.discountPrice)]
-        let percentText: [String] = [ "", String(calcData.percentSaved), String(calcData.percentSpent)] // TODO: have model calculate percents
+        let moneyText: Array<String> = [
+            currencySymbol! + dollarFormatter.string(from: NSNumber(value:calcData.originalPrice))!,
+            currencySymbol! + dollarFormatter.string(from: NSNumber(value:calcData.moneySaved))!,
+            currencySymbol! + dollarFormatter.string(from: NSNumber(value:calcData.discountPrice))!
+        ]
+        let percentText: [String] = [ "",
+                                      String(format: "%2.1f", calcData.percentSaved * 100) + "%",
+                                      String(format: "%2.1f", calcData.percentSpent * 100) + "%"
+                                    ]
 
         // Text Attributes
         let textAttributes = [
@@ -89,5 +100,42 @@ class GraphView: UIView {
 //        subText.draw(at: CGPoint(x:leftGuide + 16, y:topGuide + 36), withAttributes: textAttributes)
     }
  
+    let dollarFormatter: NumberFormatter = {
+        let nf = NumberFormatter()
+        nf.numberStyle = .decimal
+        nf.minimumFractionDigits = 2
+        nf.maximumFractionDigits = 2
+        return nf
+    }()
+    
+    // It is strange that the text must be converted to Float
+    // in order to use the format string.
+    // I guess anything but a number of some sort
+    // can't be searched for a place for the decimal point.
+    func convertToMoney(_ text: String?) -> String {
+        if (text != nil){
+            if (text != "") {
+                return String(format: "%1.2f", Float(text!)!)
+            } else {
+                // will crash on empty text field if no value given back
+                return "0.00"
+            }
+        } else {
+            return "0.00"
+        }
+    }
+    
+    func convertToPercent(_ text: String?) -> String {
+        if (text != nil) {
+            if (text != "") {
+                return String(format: "%2.2f", Float(text!)!)
+            } else {
+                // will crash on empty text field if no value given back
+                return "0.00"
+            }
+        } else {
+            return "00.00"
+        }
+    }
 
 }

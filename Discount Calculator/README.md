@@ -1,11 +1,13 @@
 # discount_backpack
 iOS discount calculator for CS 411
 Daniel Henderson
+on github: https://github.com/tindrum/discount_backpack
+
 
 ## Third-party resources
 
 Several useful techniques were gleaned from 
-*iOS Programming, The Big Nerd Ranch Guide* 
+**iOS Programming, The Big Nerd Ranch Guide** 
 by Christian Keur and Aaron Hillegass,
 published by Big Nerd Ranch.
 This book, and any from this publisher, 
@@ -29,9 +31,9 @@ Create an app with two views. The first initial view will allow the user to ente
 * make backpack image scaleable based on screen size
 * animate discount rectangle on ResultsView
 * add static image of UI to show during startup
-* show discount text for small discounts (it's covered by the final text)
 
-### Done oist
+### Done list
+* show discount text for small discounts (it's covered by the final text)
 * add application icons
 * add magenta backpack image to front page
 * make methods to calculate inset size of results pane/page

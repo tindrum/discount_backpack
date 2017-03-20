@@ -87,9 +87,19 @@ class GraphView: UIView {
         
         context.setFillColor(colors[i])
         context.fill(CGRect(x:columnXPos[1], y:subRectYPos, width:columnWidth, height: subRectangleHeight))
-        headingText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:subRectYPos + 16), withAttributes: textAttributes)
-        moneyText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:subRectYPos + 33), withAttributes: textAttributes)
-        percentText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:subRectYPos + 50), withAttributes: textAttributes)
+
+        // if the bottom box is very small, 
+        // don't let the text float below the bottom of the screen
+        let textYPos:CGFloat
+        if ( subRectangleHeight > 64 ) {
+            textYPos = subRectYPos + 16
+        } else {
+            textYPos = bottomGuide - 58
+        }
+
+        headingText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:textYPos), withAttributes: textAttributes)
+        moneyText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:textYPos + 17), withAttributes: textAttributes)
+        percentText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:textYPos + 33), withAttributes: textAttributes)
         
         
         

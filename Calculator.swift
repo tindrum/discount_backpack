@@ -62,29 +62,22 @@ final class Calculator {
     var percentSpent:Float = 0.0
     
     func calculateDiscount() {
+        let salesTax:Float = self.tax * self.price
         var workingPrice:Float = self.price
-//        print("workingPrice: " + String(workingPrice))
         workingPrice -= self.dollarsOff
-//        print("self.dollarsOff: " + String(self.dollarsOff))
-//        print("workingPrice: " + String(workingPrice))
         workingPrice *= ( 1.0 - self.discount )
-//        print("self.discount: " + String(self.discount))
-//        print("workingPrice: " + String(workingPrice))
         workingPrice *= ( 1.0 - self.otherDiscount )
-//        print("self.otherDiscount: " + String(self.otherDiscount))
-//        print("workingPrice: " + String(workingPrice))
-        let salesTax:Float = self.tax * workingPrice
-        let originalTax:Float = self.price * self.tax
-//        print("workingPrice: " + String(workingPrice))
-//        print("self.tax: " + String(self.tax))
-//        print("Sales tax: " + String(salesTax))
+//        let originalTax:Float = self.price * self.tax
+
         self.discountPrice = workingPrice + salesTax
-        self.originalPrice = self.price + originalTax
+        if ( self.discountPrice < salesTax ) {
+            self.discountPrice = salesTax
+        }
+        self.originalPrice = self.price + salesTax
         self.moneySaved = self.originalPrice - self.discountPrice
         self.percentSaved = self.moneySaved / self.originalPrice
         self.percentSpent = self.discountPrice / self.originalPrice
         
-//        print("New discount price: " + String(self.discountPrice))
     }
     
 }

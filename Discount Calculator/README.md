@@ -29,9 +29,10 @@ Create an app with two views. The first initial view will allow the user to ente
 * make backpack image scaleable based on screen size
 * animate discount rectangle on ResultsView
 * add static image of UI to show during startup
-* add application icons
+* show discount text for small discounts (it's covered by the final text)
 
 ### Done oist
+* add application icons
 * add magenta backpack image to front page
 * make methods to calculate inset size of results pane/page
 * make method to calculate absolute size of rectangles based on relative percentage of discount

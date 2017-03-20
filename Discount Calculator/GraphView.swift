@@ -41,6 +41,12 @@ class GraphView: UIView {
         let topGuide:CGFloat = 64.0 + 16.0
         let bottomGuide:CGFloat = screenHeight - 16.0
         let drawingHeight:CGFloat = screenHeight - 96.0
+        
+        let subRectangleHeight:CGFloat = drawingHeight * CGFloat(calcData.percentSpent)
+        let subRectYPos:CGFloat = topGuide + ( drawingHeight * CGFloat(calcData.percentSaved))
+        
+        let drawOverrideLimit:CGFloat = 0.85 // percent overlap, may not scale for different screen sizes
+        let drawOverride:Bool = ( subRectangleHeight / drawingHeight > drawOverrideLimit )
 
         
         for i in 0..<columns {
@@ -48,7 +54,7 @@ class GraphView: UIView {
         }
 
         // array of my favorite colors
-        var colors: Array<Int> = [ 0xD528FF, 0xF7FF58, 0xCCBC0E ]
+        var colors: Array<Int> = [ 0xCCBC0E, 0xF7FF58, 0xD528FF ]
         
 //        originalPrice.text = currencySymbol! + dollarFormatter.string(from: NSNumber(value:calcData.originalPrice))!
 //        discountPrice.text = currencySymbol! + dollarFormatter.string(from: NSNumber(value:calcData.discountPrice))!
@@ -72,34 +78,55 @@ class GraphView: UIView {
         ]
         
         // Draw Long rectangles and text
-        for i in 0..<2 {
-            context.setFillColor(colors[i])
-            context.fill(CGRect(x:columnXPos[i], y:topGuide, width:columnWidth, height: drawingHeight))
-            headingText[i].draw(at: CGPoint(x:columnXPos[i] + 16, y:topGuide + 16), withAttributes: textAttributes)
-            moneyText[i].draw(at: CGPoint(x:columnXPos[i] + 16, y:topGuide + 33), withAttributes: textAttributes)
-            percentText[i].draw(at: CGPoint(x:columnXPos[i] + 16, y:topGuide + 50), withAttributes: textAttributes)
-            
+        context.setFillColor(colors[0])
+        context.fill(CGRect(x:columnXPos[0], y:topGuide, width:columnWidth, height: drawingHeight))
+        headingText[0].draw(at: CGPoint(x:columnXPos[0] + 16, y:topGuide + 16), withAttributes: textAttributes)
+        moneyText[0].draw(at: CGPoint(x:columnXPos[0] + 16, y:topGuide + 33), withAttributes: textAttributes)
+        percentText[0].draw(at: CGPoint(x:columnXPos[0] + 16, y:topGuide + 50), withAttributes: textAttributes)
+    
+        context.setFillColor(colors[1])
+        context.fill(CGRect(x:columnXPos[1], y:topGuide, width:columnWidth, height: drawingHeight))
+        if ( !drawOverride ) {
+            headingText[1].draw(at: CGPoint(x:columnXPos[1] + 16, y:topGuide + 16), withAttributes: textAttributes)
+            moneyText[1].draw(at: CGPoint(x:columnXPos[1] + 16, y:topGuide + 33), withAttributes: textAttributes)
+            percentText[1].draw(at: CGPoint(x:columnXPos[1] + 16, y:topGuide + 50), withAttributes: textAttributes)
         }
+
         
         let i = 2
-        let subRectangleHeight:CGFloat = drawingHeight * CGFloat(calcData.percentSpent)
-        let subRectYPos:CGFloat = topGuide + ( drawingHeight * CGFloat(calcData.percentSaved))
-        
         context.setFillColor(colors[i])
         context.fill(CGRect(x:columnXPos[1], y:subRectYPos, width:columnWidth, height: subRectangleHeight))
 
         // if the bottom box is very small, 
         // don't let the text float below the bottom of the screen
         let textYPos:CGFloat
-        if ( subRectangleHeight > 64 ) {
+        if ( drawOverride ) {
+            print("need to re-draw the text in the top box")
+            let textAttributes3 = [
+                NSFontAttributeName: UIFont(name: "Helvetica Bold", size: 16.0)!,
+                NSForegroundColorAttributeName: UIColor(red:0.7, green:0.8, blue:1.0, alpha:1.0)
+            ]
+            let aboveBottomRect:CGFloat = subRectYPos + 8
+            headingText[1].draw(at: CGPoint(x:columnXPos[1] + 16, y:aboveBottomRect), withAttributes: textAttributes3)
+            moneyText[1].draw(at: CGPoint(x:columnXPos[1] + 16, y:aboveBottomRect + 17), withAttributes: textAttributes3)
+            percentText[1].draw(at: CGPoint(x:columnXPos[1] + 16, y:aboveBottomRect + 33), withAttributes: textAttributes3)
+
+            // set discount text to the bottom of the rectangle
+            textYPos = bottomGuide - 58
+        }
+        else if ( subRectangleHeight > 64 ) {
             textYPos = subRectYPos + 16
         } else {
             textYPos = bottomGuide - 58
         }
+        let textAttributes2 = [
+            NSFontAttributeName: UIFont(name: "Helvetica Bold", size: 16.0)!,
+            NSForegroundColorAttributeName: UIColor(red:0.4, green:0.8, blue:1.0, alpha:1.0)
+        ]
 
-        headingText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:textYPos), withAttributes: textAttributes)
-        moneyText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:textYPos + 17), withAttributes: textAttributes)
-        percentText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:textYPos + 33), withAttributes: textAttributes)
+        headingText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:textYPos), withAttributes: textAttributes2)
+        moneyText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:textYPos + 17), withAttributes: textAttributes2)
+        percentText[i].draw(at: CGPoint(x:columnXPos[1] + 16, y:textYPos + 33), withAttributes: textAttributes2)
         
         
         

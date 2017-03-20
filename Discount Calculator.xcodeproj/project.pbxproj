@@ -17,6 +17,7 @@
 		9D72A3731E65304700AC1ABA /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A3721E65304700AC1ABA /* ResultsViewController.swift */; };
 		9D9834851E7F341900726EB1 /* backpack.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9834841E7F341900726EB1 /* backpack.png */; };
 		9D9834881E7F7C6400726EB1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9D9834871E7F7C6400726EB1 /* README.md */; };
+		9D98348A1E7F804F00726EB1 /* backpack_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9834891E7F804F00726EB1 /* backpack_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		9D72A3721E65304700AC1ABA /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		9D9834841E7F341900726EB1 /* backpack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backpack.png; sourceTree = "<group>"; };
 		9D9834871E7F7C6400726EB1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9D9834891E7F804F00726EB1 /* backpack_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backpack_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		9D9834861E7F342600726EB1 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9D9834891E7F804F00726EB1 /* backpack_icon.png */,
 				9D9834841E7F341900726EB1 /* backpack.png */,
 			);
 			name = images;
@@ -173,6 +176,7 @@
 				9D72A3691E652FA200AC1ABA /* LaunchScreen.storyboard in Resources */,
 				9D72A3661E652FA200AC1ABA /* Assets.xcassets in Resources */,
 				9D72A3641E652FA200AC1ABA /* Main.storyboard in Resources */,
+				9D98348A1E7F804F00726EB1 /* backpack_icon.png in Resources */,
 				9D9834851E7F341900726EB1 /* backpack.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

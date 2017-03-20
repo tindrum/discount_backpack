@@ -6,7 +6,7 @@
 //  Copyright © 2017 Daniel Henderson. All rights reserved.
 //
 
-final class Calculator {
+class Calculator {
     
     // Article about singleton. 
     //http://stackoverflow.com/questions/39628277/singleton-with-swift-3-0

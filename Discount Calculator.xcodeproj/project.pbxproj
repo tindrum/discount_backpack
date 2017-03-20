@@ -16,6 +16,7 @@
 		9D72A3711E65301200AC1ABA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A3701E65301200AC1ABA /* CalculatorViewController.swift */; };
 		9D72A3731E65304700AC1ABA /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A3721E65304700AC1ABA /* ResultsViewController.swift */; };
 		9D9834851E7F341900726EB1 /* backpack.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9834841E7F341900726EB1 /* backpack.png */; };
+		9D9834881E7F7C6400726EB1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9D9834871E7F7C6400726EB1 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9D72A3701E65301200AC1ABA /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		9D72A3721E65304700AC1ABA /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		9D9834841E7F341900726EB1 /* backpack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backpack.png; sourceTree = "<group>"; };
+		9D9834871E7F7C6400726EB1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		9D72A35D1E652FA200AC1ABA /* Discount Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				9D9834871E7F7C6400726EB1 /* README.md */,
 				9D9834861E7F342600726EB1 /* images */,
 				9D90D1601E77A4BC00A91DA6 /* Views */,
 				9D90D15F1E77A4A100A91DA6 /* Controllers */,
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D9834881E7F7C6400726EB1 /* README.md in Sources */,
 				9D72A3711E65301200AC1ABA /* CalculatorViewController.swift in Sources */,
 				9D72A35F1E652FA200AC1ABA /* AppDelegate.swift in Sources */,
 				9D72A3731E65304700AC1ABA /* ResultsViewController.swift in Sources */,
